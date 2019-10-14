@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { StatusOffer } from './models/status-offer.model';
 import { AuctionService } from './services/auction.service';
 import { WebSocketAPI } from './websocket-api';
+import { differenceInBusinessDays, differenceInMilliseconds } from 'date-fns/esm';
 
 @Component({
   selector: 'app-root',
@@ -88,8 +89,12 @@ export class AppComponent implements OnInit {
   }
 
   handleMessage(message) {
+    let date = new Date(message.auctionEndDate);
+    let newDate = new Date();
+    console.log(newDate, date, differenceInMilliseconds(date, newDate));
     this.greatOffer = message;
     AuctionService.get('greatOffer').emit(message.bidPoints);
+    AuctionService.get('date').emit(new Date(message.auctionEndDate));
   }
 
   offer() {
