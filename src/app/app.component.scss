@@ -1,0 +1,29 @@
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  mat-card {
+    max-width: 500px;
+    app-timmer {
+      position: absolute;
+      left: calc(50% - 64px);
+      top: calc(50% - 125px);
+    }
+    img {
+      filter: blur(1px);
+    }
+    mat-card-content {
+      .quantity {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    mat-card-actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
