@@ -89,9 +89,6 @@ export class AppComponent implements OnInit {
   }
 
   handleMessage(message) {
-    let date = new Date(message.auctionEndDate);
-    let newDate = new Date();
-    console.log(newDate, date, differenceInMilliseconds(date, newDate));
     this.greatOffer = message;
     AuctionService.get('greatOffer').emit(message.bidPoints);
     AuctionService.get('date').emit(new Date(message.auctionEndDate));
